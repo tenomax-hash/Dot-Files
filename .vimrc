@@ -226,7 +226,6 @@ map <leader>s :%s///gc<Left><Left><Left><Left>
 map <leader>ev :tabnew $MYVIMRC<CR>
 map <leader>sv :source $MYVIMRC<CR>
 
-
 " Set Function for Line Move Up Setting
 " =====================================
 "vigate the complete menu items like CTRL+n / CTRL+p would.
@@ -253,7 +252,6 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-
 
 let $LANG='en'
 
