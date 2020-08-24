@@ -10,11 +10,8 @@ URxvt.letterSpace: -1
 URxvt.transparent:true
 URxvt.shading: 50
 URxvt.blurRadius: 0
-!URxvt.background: #4b4b3b 
+!URxvt.background: #4b4b3b
 !URxvt.foreground: #1d1f21
-
-
-
 
 ! special
 *.foreground:   #d8dee9
