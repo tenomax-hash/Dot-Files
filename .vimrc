@@ -1,6 +1,8 @@
 " =======================================
 " Created by :- Manu Manohar Elegant Artz
-" YouTube Channel:manumanohar
+" YouTube Channel:manu Manohar
+" Maintainer : Manu Manohar
+" Year : 20-06-2020
 " =======================================
 
 " Path adding to the system level
@@ -36,13 +38,13 @@ call vundle#end()
 
 let g:lightline={'colorscheme':'powerlineish'}  "LightLine theme settings.
 
-" Default  folding  settings..
+" Default  Folding  Settings..
 " ============================
 
 autocmd BufWinLeave * if expand("%") != "" | mkview | endif
 autocmd BufWinEnter * if expand("%") != "" | loadview | endif
 
-" Automatic reloading .vimrc
+" Automatic Reloading .Vimrc
 " ============================
 
 autocmd! bufwritepost .vimrc source %
@@ -57,7 +59,7 @@ autocmd BufNewFile,BufRead  *   try
 autocmd BufNewFile,BufRead  *   endtry
 autocmd BufNewFile,BufRead  *   set encoding=utf-8
 
-" Ignore filetypes which autorun vimrc
+" Ignore Filetypes Which Autorun Vimrc
 " ====================================
 
 set wildignore+=*.a,*.o,*.so,*.pyc,.git
@@ -134,39 +136,39 @@ set wildmode=longest,list,full
 set wrap
 syntax on
 
-" set cusorline and cursorcolumn
+" Set Cusorline and Cursorcolumn
 " ==============================
 set cursorline
 set cursorcolumn
 highlight CursorLine ctermbg=Yellow cterm=NONE guibg=#303030
 highlight CursorColumn ctermbg=Yellow cterm=NONE guibg=#303030
 
-" leaderkey mapping
+" Leaderkey Mapping
 " =================
 
 let mapleader=","
 
-" Cursorcentered when insertmode
+" Cursorcentered When Insertmode
 " ==============================
 
 autocmd InsertEnter * norm zz
 
-" Removing Trailing whitespace on save
+" Removing Trailing Whitespace on Save
 " ====================================
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" spell checking mapping
+" Spell Checking Mapping
 " ======================
 map <F9> :setlocal spell! spelllang=en_us<CR>
 
-" Global copy and paste Mapping
+" Global Copy and Paste Mapping
 " =============================
 
 vnoremap <C-c> "+y
 nmap <C-p> "+p
 
-" Global save & quite command
+" Global Save & Quite Command
 " ===========================
 
 map <F4> :q!<CR>
@@ -176,27 +178,26 @@ map <F7> :set rnu!<CR>
 inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
 
-" Clear search highlights
+" Clear Search Highlights
 " =======================
 
 map <F6> :let @/=""<CR>
 
-" Map for switching windows
+" Map for Switching Windows
 " =========================
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
-
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Shortcut spliting window
+" Shortcut Spliting Window
 " ========================
 
 nnoremap <leader>h :split<Space>
 nnoremap <leader>v :vsplit<Space>
 
-" Visual mapping in Visual modes
+" Visual Mapping in Visual Modes
 " ==============================
 
 xnoremap <C-h> <C-w>h
@@ -204,7 +205,7 @@ xnoremap <C-j> <C-w>j
 xnoremap <C-k> <C-w>k
 xnoremap <C-l> <C-w>l
 
-" Move VISUAL LINE selection within buffer.
+" Move VISUAL LINE Selection Within Buffer.
 " =========================================
 
 xnoremap <silent> K :call tenomax#visual#move_up()<CR>
@@ -215,16 +216,18 @@ xnoremap <silent> J :call tenomax#visual#move_down()<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Global search
-" =============
+" Using Leader Mappings
+" =====================
 
-map <leader>s :%s///gc<Left><Left><Left><Left>
+map <leader>s :update<cr>
+map <leader>fs :%s///gc<Left><Left><Left><Left>
 
 " Map .vimrc and Sourceing vimrc
 " ==============================
 
 map <leader>ev :tabnew $MYVIMRC<CR>
 map <leader>sv :source $MYVIMRC<CR>
+
 
 " Set Function for Line Move Up Setting
 " =====================================
@@ -245,13 +248,14 @@ inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 
 " Map arrow keys noting So i can use hjkl movement
 " ================================================
-" disabled Arrow keys
+" disabled Arro keys
 " ===================
 
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
 
 let $LANG='en'
 
@@ -278,7 +282,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_wisize = 25
 set autochdir
 map <leader>e :Lexplore<CR>
 
