@@ -123,8 +123,8 @@ set splitbelow
 set tabstop=4
 set termguicolors
 set textwidth=0
-set timeoutlen=650
-set ttimeout
+" set timeoutlen=650
+" set ttimeout
 set ttyfast
 set ttymouse=sgr
 set undodir=/tmp
@@ -178,6 +178,7 @@ map <F7> :set rnu!<CR>
 inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
 
+
 " Clear Search Highlights
 " =======================
 
@@ -225,8 +226,8 @@ map <leader>fs :%s///gc<Left><Left><Left><Left>
 " Map .vimrc and Sourceing vimrc
 " ==============================
 
-map <leader>ev :tabnew $MYVIMRC<CR>
-map <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :tabnew $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 " Set Function for Line Move Up Setting
@@ -282,7 +283,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_wisize = 25
+let g:netrw_wisize =25
 set autochdir
 map <leader>e :Lexplore<CR>
 
