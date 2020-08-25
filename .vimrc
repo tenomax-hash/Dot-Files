@@ -178,6 +178,10 @@ map <F7> :set rnu!<CR>
 inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
 
+" Training your Finger
+" ====================
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 " Clear Search Highlights
 " =======================
@@ -307,3 +311,5 @@ nnoremap <leader>d :call tenomax#maxfn#SpellError()<CR>
 " ========
 nnoremap <leader>hh :call tenomax#maxfn#HeadLine()<CR>
 
+" End Line
+" ========
