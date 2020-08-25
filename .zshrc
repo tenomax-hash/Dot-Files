@@ -124,6 +124,10 @@ alias cols="colorls"
 alias csay="ls | cowsay"
 alias google="firefox google.com"
 alias vi="vim"
+alias gh="cd /home/tenomax/Documents/git-hub"
+alias gd="cd /home/tenomax/google-drive"
+alias gD="cd /home/tenomax/Downloads/"
+alias gdd="cd /home/tenomax/Documents/"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
