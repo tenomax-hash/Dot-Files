@@ -1,6 +1,6 @@
 " =======================================
 " Created by :- Manu Manohar Elegant Artz
-" YouTube Channel:manu Manohar
+" YouTube Channel:manu manohar
 " Maintainer : Manu Manohar
 " Year : 20-06-2020
 " =======================================
