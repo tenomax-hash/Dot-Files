@@ -168,6 +168,8 @@ nmap <C-p> "+p
 
 " Global Save & Quite Command
 " ===========================
+let t:is_transparent=0 "Transparancy settings
+nnoremap <F2> :call tenomax#maxfn#Toggle_transparent_background()<CR>
 
 map <F4> :q!<CR>
 inoremap <F5> <C-o>:w <CR>
@@ -269,15 +271,8 @@ source $VIMRUNTIME/menu.vim
 
 "Sourcing Evrything ("Don't Why but You Need to Do It)
 
-" Transparancy Function
-" =====================
-
-let t:is_transparent=0
-nnoremap <F2> :call tenomax#maxfn#Toggle_transparent_background()<CR>
-
 " Filemanager Ntree Mapping
 " =========================
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -299,9 +294,14 @@ inoremap { {}<Esc>i
 inoremap [ []<Esc>i
 inoremap < <><Esc>i
 
+" This for Exit Cursor Positon to right
+" =====================================
+inoremap <tab><tab> <esc><right><right>i
+
 " SpellEroor
 " ==========
 nnoremap <leader>d :call tenomax#maxfn#SpellError()<CR>
+
 " Headline
 " ========
 nnoremap <leader>hh :call tenomax#maxfn#HeadLine()<CR>
