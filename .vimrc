@@ -33,7 +33,8 @@ Plugin 'christoomey/vim-titlecase'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'dracula/vim', { 'name': 'dracula' } "Vim Themes
 Plugin 'mswift42/vim-themes'  "Vim themes
-
+Plugin 'nvie/vim-flake8'
+Plugin 'dense-analysis/ale'
 call vundle#end()
 
 let g:lightline={'colorscheme':'powerlineish'}  "LightLine theme settings.
@@ -158,9 +159,6 @@ autocmd InsertEnter * norm zz
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" Spell Checking Mapping
-" ======================
-map <F9> :setlocal spell! spelllang=en_us<CR>
 
 " Global Copy and Paste Mapping
 " =============================
@@ -174,19 +172,16 @@ nmap <C-p> "+p
 map <F4> :q!<CR>
 inoremap <F5> <C-o>:w <CR>
 map <F5> :w <CR>
-map <F7> :set rnu!<CR>
+nnoremap <F6> :let @/=""<CR>
+nmap <F3> :set rnu!<CR>
 inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
+map <F9> :setlocal spell! spelllang=en_us<CR>
 
 " Training your Finger
 " ====================
 inoremap jk <esc>
-inoremap <esc> <nop>
-
-" Clear Search Highlights
-" =======================
-
-map <F6> :let @/=""<CR>
+" inoremap <esc> <nop>
 
 " Map for Switching Windows
 " =========================
@@ -310,6 +305,13 @@ nnoremap <leader>d :call tenomax#maxfn#SpellError()<CR>
 " Headline
 " ========
 nnoremap <leader>hh :call tenomax#maxfn#HeadLine()<CR>
+
+" Ale linters and Fixers error
+" ==============================
+
+let g:ale_linters={'python':['flake8']}
+let g:ale_fixers={'*':[],'python':['black','isort']}
+let g:ale_fix_on_save = 1
 
 " End Line
 " ========
