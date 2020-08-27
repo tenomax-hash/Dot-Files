@@ -54,7 +54,7 @@ call vundle#end()               " required
 colorscheme ayu
 filetype plugin indent on       " required
 set nocompatible               " be improved, required
-filetype off                   " required
+filetype detect                   " required
 syntax on
 
 " ==================================
