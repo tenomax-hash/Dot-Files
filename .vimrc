@@ -1,6 +1,6 @@
 " =======================================
 " Created by :- Manu Manohar Elegant Artz
-" YouTube Channel:manu manohar
+" YouTube Channel:manu Manohar
 " Maintainer : Manu Manohar
 " Year : 20-06-2020
 " =======================================
@@ -35,6 +35,7 @@ Plugin 'dracula/vim', { 'name': 'dracula' } "Vim Themes
 Plugin 'mswift42/vim-themes'  "Vim themes
 Plugin 'nvie/vim-flake8'
 Plugin 'dense-analysis/ale'
+Plugin 'junegunn/fzf' "fuzzy file search
 call vundle#end()
 
 let g:lightline={'colorscheme':'powerlineish'}  "LightLine theme settings.
@@ -312,6 +313,10 @@ nnoremap <leader>hh :call tenomax#maxfn#HeadLine()<CR>
 let g:ale_linters={'python':['flake8']}
 let g:ale_fixers={'*':[],'python':['black','isort']}
 let g:ale_fix_on_save = 1
+" fuzzy file search
+" =================
+nnoremap <leader>x :FZF <cr>
+
 
 " End Line
 " ========
