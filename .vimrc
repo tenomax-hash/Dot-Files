@@ -5,13 +5,16 @@
 " Year : 20-06-2020
 " =======================================
 
+" =================================
 " Path adding to the system level
 " =================================
 
 set rtp+=~/.vim/bundle/Vundle.vim
 " set path+=$VIMRUNTIME
 set path+=**
+set rtp+=~/Documents/vim-myplug
 
+" =================
 " Plugings begins
 " =================
 
@@ -40,19 +43,23 @@ call vundle#end()
 
 let g:lightline={'colorscheme':'powerlineish'}  "LightLine theme settings.
 
+" ==============================
 " Default  Folding  Settings..
-" ============================
+" ==============================
 
 autocmd BufWinLeave * if expand("%") != "" | mkview | endif
 autocmd BufWinEnter * if expand("%") != "" | loadview | endif
 
+" ============================
 " Automatic Reloading .Vimrc
 " ============================
 
 autocmd! bufwritepost .vimrc source %
 
+" =====================
 "Convert tex to UTF-8
-" ===================
+" =====================
+
 scriptencoding utf-8
 set encoding=utf-8
 setglobal termencoding=utf-8 fileencodings=
@@ -61,15 +68,20 @@ autocmd BufNewFile,BufRead  *   try
 autocmd BufNewFile,BufRead  *   endtry
 autocmd BufNewFile,BufRead  *   set encoding=utf-8
 
+
+" ======================================
 " Ignore Filetypes Which Autorun Vimrc
-" ====================================
+" ======================================
+
 
 set wildignore+=*.a,*.o,*.so,*.pyc,.git
 set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.ico,*.pdf
 set wildignore+=*.tmp,*.swp
 
+" ======================
 " Vimrc Basic settings
-" ====================
+" ======================
+
 
 colorscheme gruvbox
 filetype detect
@@ -138,38 +150,48 @@ set wildmode=longest,list,full
 set wrap
 syntax on
 
+" ================================
 " Set Cusorline and Cursorcolumn
-" ==============================
+" ================================
+
 set cursorline
 set cursorcolumn
 highlight CursorLine ctermbg=Yellow cterm=NONE guibg=#303030
 highlight CursorColumn ctermbg=Yellow cterm=NONE guibg=#303030
 
+" ===================
 " Leaderkey Mapping
-" =================
+" ===================
+
 
 let mapleader=","
 let maplocalleader="_"
 
+" ================================
 " Cursorcentered When Insertmode
-" ==============================
+" ================================
+
 
 autocmd InsertEnter * norm zz
 
+" ======================================
 " Removing Trailing Whitespace on Save
-" ====================================
+" ======================================
+
 
 autocmd BufWritePre * %s/\s\+$//e
 
-
+" ===============================
 " Global Copy and Paste Mapping
-" =============================
+" ===============================
 
 vnoremap <C-c> "+y
 nmap <C-p> "+p
 
+" =============================
 " Global Save & Quite Command
-" ===========================
+" =============================
+
 let t:is_transparent=0 "Transparancy settings
 nnoremap <F2> :call tenomax#maxfn#Toggle_transparent_background()<CR>
 
@@ -182,56 +204,65 @@ inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
 map <F9> :setlocal spell! spelllang=en_us<CR>
 
+" ======================
 " Training your Finger
-" ====================
-inoremap jk <esc>
-" inoremap <esc> <nop>
+" ======================
 
+inoremap jk <esc>
+
+" inoremap <esc> <nop>
+" ===========================
 " Map for Switching Windows
-" =========================
+" ===========================
+
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" ==========================
 " Shortcut Spliting Window
-" ========================
+" ==========================
 
 nnoremap <leader>h :split<Space>
 nnoremap <leader>v :vsplit<Space>
 
+" ================================
 " Visual Mapping in Visual Modes
-" ==============================
+" ================================
 
 xnoremap <C-h> <C-w>h
 xnoremap <C-j> <C-w>j
 xnoremap <C-k> <C-w>k
 xnoremap <C-l> <C-w>l
 
+" ===========================================
 " Move VISUAL LINE Selection Within Buffer.
-" =========================================
+" ===========================================
 
 xnoremap <silent> K :call tenomax#visual#move_up()<CR>
 xnoremap <silent> J :call tenomax#visual#move_down()<CR>
 
+" ==================================
 " Easier to Move Block Code Easier
-" ================================
+" ==================================
 vnoremap < <gv
 vnoremap > >gv
 
+" =======================
 " Using Leader Mappings
-" =====================
+" =======================
 
 map <leader>s :update<cr>
 map <leader>fs :%s///gc<Left><Left><Left><Left>
 
+" ================================
 " Map .vimrc and Sourceing vimrc
-" ==============================
+" ================================
 
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
 
 " Set Function for Line Move Up Setting
 " =====================================
@@ -260,11 +291,11 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-
 let $LANG='en'
 
+" ================================
 "Setting Env LANG Var to English
-" ==============================
+" ================================
 
 set langmenu=en
 
@@ -274,7 +305,6 @@ source $VIMRUNTIME/menu.vim
 "Sourcing Evrything ("Don't Why but You Need to Do It)
 
 " Additional Closing Qoutes or Braces in Insert Mode
-" ==================================================
 
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
@@ -283,31 +313,33 @@ inoremap { {}<Esc>i
 inoremap [ []<Esc>i
 inoremap < <><Esc>i
 
+" =======================================
 " This for Exit Cursor Positon to right
-" =====================================
+" =======================================
 inoremap <tab><tab> <esc><right><right>i
 
+" ============
 " SpellEroor
-" ==========
+" ============
 nnoremap <leader>d :call tenomax#maxfn#SpellError()<CR>
 
-" Headline
-" ========
-nnoremap <leader>hh :call tenomax#maxfn#HeadLine()<CR>
-
+" ==============================
 " Ale linters and Fixers error
 " ==============================
 
 let g:ale_linters={'python':['flake8']}
 let g:ale_fixers={'*':[],'python':['black','isort']}
 let g:ale_fix_on_save = 1
+
+" ===================
 " fuzzy file search
-" =================
+" ===================
 nnoremap <leader>x :FZF <cr>
 
-" =======
-" Netrw
-" =======
+" ===================================================================
+"                             Netrw
+" ===================================================================
+
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -352,7 +384,9 @@ augroup netrw_mappings
     autocmd filetype netrw call NetrwMappings()
 augroup END
 
+" ===============================
 " Allow for netrw to be toggled
+" ===============================
 function! ToggleNetrw()
     if g:NetrwIsOpen
         let i = bufnr("$")
@@ -369,7 +403,9 @@ function! ToggleNetrw()
     endif
 endfunction
 
+" =========================================
 " Check before opening buffer on any file
+" =========================================
 function! NetrwOnBufferOpen()
   if exists('b:noNetrw')
       return
@@ -377,7 +413,9 @@ function! NetrwOnBufferOpen()
   call ToggleNetrw()
 endfun
 
+" ==========================================
 " Close Netrw if it's the only buffer open
+" ==========================================
 autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
 
 " Make netrw act like a project Draw
@@ -392,11 +430,17 @@ let g:NetrwIsOpen=0
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide=ghregex
 
-
 " =====================================
 " run only Python files opens command
 " =====================================
+
 autocmd FileType python nnoremap <buffer> <localleader>r :! python %<cr>
+" ===================
+" Headline comments
+" ===================
+
+nnoremap <leader>h :MakeBelowUnderLine<cr>
+nnoremap <leader>H :MakeAboveUnderLine<cr>
 
 " =========
 " Endline
