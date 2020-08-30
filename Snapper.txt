@@ -1,36 +1,39 @@
---------------------------------------------------------------------------------------------------------------------------------------------
+======================================================================
 /////////* This is my text for creating Arch installatin guide *//////
---------------------------------------------------------------------------------------------------------------------------------------------
+======================================================================
+
 Commands used
-*************
+=============
 
 Internet check:
-*************
+===============
 
 ip a
 
 Connect to Wi-Fi at install:
-****************************
+============================
 wifi-menu
 
 update mirror list
-*****************"
-reflector  --verbose --country  'India' -l 6 --sort rate --save  /etc/pacman.d/mirrorlist
+==================
+
+reflector  --verbose --country  'India' -l 6 --sort rate --save
+/etc/pacman.d /mirrorlist
 
 Network Time Protocol sync:
-***************************
+===========================
 
 timedatectl set-ntp true
 
 
 
 Disk partitioning:
-******************
+==================
 
 fdisk/[disk name]
 
 Format EFI and Root partitions:
-*******************************
+===============================
 
 mkfs.fat -F32 /dev/[partition name]
 mkfs.btrfs /dev/[partiton name]
@@ -38,7 +41,7 @@ mkswap /dev/[partition name]
 swapon /dev/[partition name]
 
 Mount partitions and subvolume creation:
-****************************************
+========================================
 
 mount /dev/[partition name] /mnt
 btrfs su cr /mnt/@
@@ -48,12 +51,12 @@ mkdir -p /mnt/boot/EFI
 mount /dev/[efi partition] /mnt/boot/EFI
 
 Base install:
-*************
+=============
 
 pacstrap /mnt base linux linux-firmware nano
 
 Generate the FSTAB file:
-************************
+========================
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -62,7 +65,7 @@ Enter the installation
 arch-chroot /mnt
 
 Localization (replace accordingly to your Timezone):
-****************************************************
+====================================================
 
 ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 hwclock --systohc
@@ -71,7 +74,7 @@ locale-gen
 echo "LANG=your locale here" >> /etc/locale.conf
 
 Hostname and Hosts file:
-************************
+========================
 
 nano /etc/hostname (enter a name of your choice)
 nano /etc/hosts
@@ -80,42 +83,44 @@ nano /etc/hosts
 127.0.1.1 hostname.localdomain hostname (replace with your hostname)
 
 Root password:
-**************
+==============
 
 passwd
 
 Bootloader and Networking tools:
-**********************************
+================================
 
-pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers reflector cron
+pacman -S grub efibootmgr networkmanager network-manager-applet
+wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel
+linux-headers reflector cron
 
 Grub install:
-**************
+=============
 
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
 
 Grub configuration file:
-************************
+========================
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
 Activate internet for next reboot:
-************************************
+==================================
 
 systemctl enable NetworkManager
 
 Add user:
-*********
+=========
 
 useradd -mG wheel username (replace with yours)
 
 Create password for the user:
-*****************************
+=============================
 
 passwd username (replace with yours)
 
 Give the user Sudo priviledges:
-********************************
+===============================
 
 EDITOR=nano visudo
 uncomment the %wheel all=(all) all
@@ -127,50 +132,50 @@ umount -a
 reboot
 
 Check for internet:
-*******************
+===================
 
 ip a
 
 If on Wi-Fi connect with:
-**************************
+=========================
 
 nmtui
 
 Graphics card drivers for Intel, AMD and Nvidia cards:
-*******************************************************
+======================================================
 
 sudo pacman -S xf86-video-intl
 sudo pacman -S xf86-video-amdgpu
 sudo pacman -S nvidia nividia-utils
 
 Display server:
-***************
+===============
 
 sudo pacman -S xorg
 
 Display manager installation and activation:
-********************************************
+============================================
 
 sudo pacman -S gdm
 sudo systemctl enable gdm
 
 Desktop Environment install:
-****************************
+============================
 sudo pacman -S gnome gnome-extra firefox
 
 Unmounting and removing the ./snapshots directory:
-**************************************************
+==================================================
 
 umount /.snapshots/
 rm -rf /.snapshots/
 
 Create the root configuration:
-******************************
+==============================
 
 snapper -c root create-config /
 
 Starting and enabling the timers:
-*********************************
+=================================
 
 systecmtl start snapper-timeline.time
 systemctl enable snapper-timeline.timer
@@ -178,31 +183,31 @@ systemctl start snapper-cleanup.timer
 systemctl enable snapper-cleanup.timer
 
 Starting and enabling the grub-btrfs service:
-*********************************************
+=============================================
 
 systemctl start grub-btrfs.path
 systemctl enable grub-btrfs.path
 
 Create a new snapshot:
-**********************
+======================
 
 snapper -c root create -c timeline --descritpion YourDescriptionHere
 
 BTRFS subvolume properties:
-***************************
+===========================
 
 btrfs property list -ts /path/to/snapshot
 
 Make a snapshot writable:
-*************************
+=========================
 
 btrfs property set -ts /path/to/snapshot ro false
 
 Hook for the /boot partition:
-*****************************
+=============================
 
 nano /usr/share/libalpm/50_bootbackup.hook
-******************************************
+==========================================
 [Trigger]
 Operation = Upgrade
 Operation = Install
@@ -216,4 +221,5 @@ Description = Backing up /boot...
 When = PreTransaction
 Exec = /usr/bin/rsync -a --delete /boot /.bootbackup
 
-Thanks to everyone who joined us on the live stream and let us know how you like Arch Linux!
+Thanks to everyone who joined us on the live stream and let us know how you
+like Arch Linux!
