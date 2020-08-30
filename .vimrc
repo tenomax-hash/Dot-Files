@@ -301,10 +301,13 @@ set langmenu=en
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-
+" ======================================================
 "Sourcing Evrything ("Don't Why but You Need to Do It)
 
+
+" ====================================================
 " Additional Closing Qoutes or Braces in Insert Mode
+" ====================================================
 
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
@@ -319,7 +322,7 @@ inoremap < <><Esc>i
 inoremap <tab><tab> <esc><right><right>i
 
 " ============
-" SpellEroor
+" SpellError
 " ============
 nnoremap <leader>d :call tenomax#maxfn#SpellError()<CR>
 
