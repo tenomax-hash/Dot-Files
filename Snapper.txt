@@ -216,10 +216,20 @@ Type = Package
 Target = linux*
 
 [Action]
+
 Depends = rsync
 Description = Backing up /boot...
 When = PreTransaction
 Exec = /usr/bin/rsync -a --delete /boot /.bootbackup
+====================================================
 
+===========================================================================
 Thanks to everyone who joined us on the live stream and let us know how you
 like Arch Linux!
+
+=============================
+For Verify Updation Archlinux
+===============================================================================
+sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+===============================================================================
+
