@@ -224,7 +224,6 @@ Depends = rsync
 Description = Backing up /boot...
 When = PreTransaction
 Exec = /usr/bin/rsync -a --delete /boot /.bootbackup
-====================================================
 
 ===========================================================================
 Thanks to everyone who joined us on the live stream and let us know how you
