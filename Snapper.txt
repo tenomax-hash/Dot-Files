@@ -22,7 +22,6 @@ reflector  --verbose --country  'India' -l 6 --sort rate --save
 
 Second option
 =============
-
 reflector  --verbose --latest 5 --sort rate --save
 /etc/pacman.d /mirrorlist
 
@@ -30,8 +29,6 @@ Network Time Protocol sync:
 ===========================
 
 timedatectl set-ntp true
-
-
 
 Disk partitioning:
 ==================
