@@ -20,6 +20,9 @@ update mirror list
 reflector  --verbose --country  'India' -l 6 --sort rate --save
 /etc/pacman.d /mirrorlist
 
+Second option
+=============
+
 reflector  --verbose --latest 5 --sort rate --save
 /etc/pacman.d /mirrorlist
 
