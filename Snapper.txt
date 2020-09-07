@@ -10,6 +10,11 @@ Internet check:
 
 ip a
 
+Ping Checking
+=============
+ping -c 3 google.com
+
+
 Connect to Wi-Fi at install:
 ============================
 wifi-menu
