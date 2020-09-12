@@ -13,7 +13,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " set path+=$VIMRUNTIME
 set path+=**
 set rtp+=~/Documents/vim-myplug
-
+set rtp+=~/Documents/ex-plugin
 " =================
 " Plugings begins
 " =================
@@ -133,7 +133,7 @@ set showmode
 set smartcase
 set softtabstop=2
 set spelllang=en_us
-set splitbelow
+set splitbelow splitright
 set tabstop=4
 set termguicolors
 set textwidth=0
@@ -202,7 +202,8 @@ nnoremap <F6> :let @/=""<CR>
 nmap <F3> :set rnu!<CR>
 inoremap <F7> <C-o>:set list!<CR>
 inoremap <F8> <C-o>:Limelight!!<CR>
-map <F9> :setlocal spell! spelllang=en_us<CR>
+" map <F9> :setlocal spell! spelllang=en_us<CR>
+map <F9> :setlocal spell! spelllang=en<CR>
 
 " ======================
 " Training your Finger
@@ -266,6 +267,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Set Function for Line Move Up Setting
 " =====================================
+" =========================================================
 "vigate the complete menu items like CTRL+n / CTRL+p would.
 " =========================================================
 
@@ -339,100 +341,6 @@ let g:ale_fix_on_save = 1
 " ===================
 nnoremap <leader>x :FZF <cr>
 
-" ===================================================================
-"                             Netrw
-" ===================================================================
-
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 20
-
-function! OpenToRight()
-  :normal v
-  let g:path=expand('%:p')
-  :q!
-  execute 'belowright vnew' g:path
-  :normal <C-w>l
-endfunction
-
-function! OpenBelow()
-  :normal v
-  let g:path=expand('%:p')
-  :q!
-  execute 'belowright new' g:path
-  :normal <C-w>l
-endfunction
-
-function! OpenTab()
-  :normal v
-  let g:path=expand('%:p')
-  :q!
-  execute 'tabedit' g:path
-  :normal <C-w>l
-endfunction
-
-function! NetrwMappings()
-    " Hack fix to make ctrl-l work properly
-    noremap <buffer> <M-l> <C-w>l
-    noremap <buffer> <C-l> <C-w>l
-    noremap <silent> <leader>e :call ToggleNetrw()<CR>
-    noremap <buffer> V :call OpenToRight()<cr>
-    noremap <buffer> H :call OpenBelow()<cr>
-    noremap <buffer> T :call OpenTab()<cr>
-endfunction
-
-augroup netrw_mappings
-    autocmd!
-    autocmd filetype netrw call NetrwMappings()
-augroup END
-
-" ===============================
-" Allow for netrw to be toggled
-" ===============================
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore
-    endif
-endfunction
-
-" =========================================
-" Check before opening buffer on any file
-" =========================================
-function! NetrwOnBufferOpen()
-  if exists('b:noNetrw')
-      return
-  endif
-  call ToggleNetrw()
-endfun
-
-" ==========================================
-" Close Netrw if it's the only buffer open
-" ==========================================
-autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
-
-" Make netrw act like a project Draw
-augroup ProjectDrawer
-  autocmd!
-  	" Don't open Netrw
-  autocmd VimEnter ~/.config/joplin/tmp/*,/tmp/calcurse*,~/.calcurse/notes/*,~/vimwiki/*,*/.git/COMMIT_EDITMSG let b:noNetrw=1
-  autocmd VimEnter * :call NetrwOnBufferOpen()
-augroup END
-
-let g:NetrwIsOpen=0
-let ghregex='\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_list_hide=ghregex
-
 " =====================================
 " run only Python files opens command
 " =====================================
@@ -444,6 +352,17 @@ autocmd FileType python nnoremap <buffer> <localleader>r :! python %<cr>
 
 nnoremap <leader>h :MakeBelowUnderLine<cr>
 nnoremap <leader>H :MakeAboveUnderLine<cr>
+nnoremap <leader>p :MakePointer<cr>
+" ==================
+" NERTree Like setup
+" ==================
+let g:netrw_banner=0
+
+let g:netrw_liststyle=3
+let g:netrw_browe_split=4
+let g:netrw_alv=1
+let g:netrw_winsize=30
+nnoremap <leader>e :Lexplore<cr>
 
 " =========
 " Endline
