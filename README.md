@@ -10,3 +10,6 @@ My system dot files
             Edited .vimrc files
             ===================
 
+<!-- Sat Sep 26 08:25:25 IST 2020 -->
+            Vimrc edited and Added new settings
+            -----------------------------------
