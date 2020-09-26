@@ -13,7 +13,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " set path+=$VIMRUNTIME
 set path+=**
 set rtp+=~/Documents/vim-myplug
-set rtp+=~/Documents/ex-plugin
 " =================
 " Plugings begins
 " =================
@@ -321,7 +320,7 @@ inoremap < <><Esc>i
 " =======================================
 " This for Exit Cursor Positon to right
 " =======================================
-inoremap <tab><tab> <esc><right><right>i
+inoremap <tab><tab> <right><right>
 
 " ============
 " SpellError
@@ -353,6 +352,7 @@ autocmd FileType python nnoremap <buffer> <localleader>r :! python %<cr>
 nnoremap <leader>h :MakeBelowUnderLine<cr>
 nnoremap <leader>H :MakeAboveUnderLine<cr>
 nnoremap <leader>p :MakePointer<cr>
+nnoremap <leader><leader>h :MakeHash<cr>
 " ==================
 " NERTree Like setup
 " ==================
