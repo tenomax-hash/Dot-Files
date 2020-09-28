@@ -38,6 +38,7 @@ Plugin 'mswift42/vim-themes'  "Vim themes
 Plugin 'nvie/vim-flake8'
 Plugin 'dense-analysis/ale'
 Plugin 'junegunn/fzf' "fuzzy file search
+Plugin 'TextFormat'
 call vundle#end()
 
 let g:lightline={'colorscheme':'powerlineish'}  "LightLine theme settings.
